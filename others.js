@@ -1,3 +1,5 @@
+'use strict';
+
 /* 1. Find the frequency of elements in array */
 function method1() {
   let arr = ['hello', 'yo', 'hello', 'nice', 'yo'];
@@ -479,3 +481,69 @@ const addScope = (a, b, arr = []) =>
   addNumberFromArray(arr.slice(arr.indexOf(a), arr.indexOf(b) + 1));
 
 console.log(addScope(3, 2, arrToSum));
+
+const users = [
+  {
+    id: 0,
+    name: 'Jack',
+    isActive: true,
+    age: 20,
+  },
+  {
+    id: 1,
+    name: 'John',
+    isActive: true,
+    age: 18,
+  },
+  {
+    id: 2,
+    name: 'Mike',
+    isActive: false,
+    age: 30,
+  },
+];
+
+const getUserNames = (users) => users.map((user) => user.name);
+const getActiveUserNames = (users) => users.filter((user) => user.isActive);
+const sortUsersByAgeDescending = (users) => users.sort((a, b) => b.age - a.age);
+console.log(sortUsersByAgeDescending(users));
+
+class Counter {
+  constructor(value) {
+    this.value = value;
+  }
+
+  increment() {
+    return this.value++;
+  }
+
+  getValue() {
+    console.log(this.value);
+  }
+}
+
+const newCounter = new Counter(1);
+newCounter.increment();
+newCounter.increment();
+newCounter.getValue();
+
+const curryingCounter = (a) => (b) => a + b;
+const newCurryingCounter = curryingCounter(1);
+console.log(newCurryingCounter(2));
+
+const appendArr = [1, 2, 3];
+const append = (arr, el = arr[arr.length - 1] + 1) => {
+  return [...arr, el];
+};
+console.log(append(appendArr));
+console.log(appendArr);
+
+const books = [
+  { name: 'Harry Potter', author: 'Joanne Cwling' },
+  { name: 'Warcross', author: 'Marie Blu' },
+  { name: 'The Hunger Games', author: 'Suzanne Acollins' },
+];
+
+const sortedBooksByAuthorsLastName = (dic) =>
+  dic.sort((a, b) => (a.author.split(' ')[1] < b.author.split(' ')[1] ? -1 : 1), 0);
+console.log(sortedBooksByAuthorsLastName(books));
